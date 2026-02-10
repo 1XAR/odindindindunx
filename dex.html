@@ -25,25 +25,27 @@ body{
     box-shadow:0 15px 40px rgba(0,0,0,0.2);
 }
 
-h1{color:#ff4d6d;font-size:45px;}
-p{font-size:20px;color:#333;}
+p{font-size:22px;color:#333;}
 
 button{
     margin:15px;
-    padding:15px 30px;
+    padding:15px 35px;
     border:none;
     border-radius:30px;
-    font-size:18px;
+    font-size:20px;
     cursor:pointer;
-    transition:0.2s;
+    transition:0.3s;
 }
 
-.yes{background:#ff4d6d;color:white;}
-.no{background:#ddd;position:relative;}
+.yes{
+    background:#ff4d6d;
+    color:white;
+}
 
-button:hover{transform:scale(1.1);}
+.no{
+    background:#ddd;
+}
 
-/* หัวใจ */
 .heart{
     position:fixed;
     color:red;
@@ -60,40 +62,34 @@ button:hover{transform:scale(1.1);}
 
 <div class="box">
     <p>ขอเลียหน่อย 😳</p>
-    <button class="yes" onclick="love()">ได้ 😳</button>
-    <button class="no" id="noBtn">ไม่ 😝</button>
+    <button class="yes" id="yesBtn" onclick="love()">ได้ 😳</button>
+    <button class="no" onclick="grow()">ไม่ 😝</button>
 </div>
 
 <script>
+let size = 1;
+
 function love(){
-    alert("รักนะหมูเเว่น 💖😳");
+    alert("ยอมแล้วใช่มั้ย 😳💖");
 }
 
-/* ปุ่มไม่ = หนีโคตรไว */
-const noBtn = document.getElementById("noBtn");
+function grow(){
+    size += 0.5;
 
-function moveBtn(){
-    let x = Math.random() * (window.innerWidth - 100);
-    let y = Math.random() * (window.innerHeight - 50);
-    noBtn.style.position="fixed";
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+    let yes = document.getElementById("yesBtn");
+    yes.style.transform = "scale(" + size + ")";
+
+    if(size > 4){
+        yes.style.position="fixed";
+        yes.style.top="0";
+        yes.style.left="0";
+        yes.style.width="100vw";
+        yes.style.height="100vh";
+        yes.style.borderRadius="0";
+        yes.style.fontSize="60px";
+        yes.innerHTML="กดสิ 😳💖";
+    }
 }
-
-/* คอม */
-noBtn.addEventListener("mouseover", moveBtn);
-
-/* มือถือ */
-noBtn.addEventListener("touchstart", function(e){
-    e.preventDefault();
-    moveBtn();
-});
-
-/* เผื่อกดโดน */
-noBtn.addEventListener("click", function(e){
-    e.preventDefault();
-    moveBtn();
-});
 
 /* หัวใจลอย */
 setInterval(()=>{
