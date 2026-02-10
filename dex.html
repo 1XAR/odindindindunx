@@ -91,14 +91,24 @@ button:hover{
 
 <script>
 function love(){
-    alert("รักนะหมูเเว่น");
+    alert("รักนะหมูเเว่น 😳💖");
 }
 
+/* ปุ่มไม่ = หนีโคตรไว */
 function run(btn){
-    btn.style.position="absolute";
-    btn.style.top=Math.random()*80+"%";
-    btn.style.left=Math.random()*80+"%";
+    let x = Math.random() * (window.innerWidth - btn.clientWidth);
+    let y = Math.random() * (window.innerHeight - btn.clientHeight);
+
+    btn.style.position="fixed";
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
 }
+
+/* มือถือก็กดไม่ได้ */
+document.querySelector(".no").addEventListener("click", function(e){
+    e.preventDefault();
+    run(this);
+});
 
 /* หัวใจลอย */
 setInterval(()=>{
@@ -115,5 +125,3 @@ setInterval(()=>{
 },300);
 </script>
 
-</body>
-</html>
