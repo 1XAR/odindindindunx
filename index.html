@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>หมูเเว่น</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    font-family:Arial, Helvetica, sans-serif;
+    overflow:hidden;
+}
+
+/* กล่องกลาง */
+.box{
+    background:white;
+    padding:60px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    animation:fade 1.2s ease;
+}
+
+@keyframes fade{
+    from{opacity:0; transform:scale(0.7);}
+    to{opacity:1; transform:scale(1);}
+}
+
+h1{
+    color:#ff4d6d;
+    font-size:45px;
+}
+
+p{
+    font-size:20px;
+    color:#333;
+}
+
+button{
+    margin:15px;
+    padding:15px 30px;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.yes{
+    background:#ff4d6d;
+    color:white;
+}
+
+.no{
+    background:#ddd;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+/* หัวใจลอย */
+.heart{
+    position:absolute;
+    color:red;
+    animation:float 6s linear infinite;
+    font-size:20px;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh); opacity:1;}
+    100%{transform:translateY(-10vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    
+    <p>ขอเลียหน่อย 😳</p>
+    <button class="yes" onclick="love()">ได้ 😳</button>
+    <button class="no" onmouseover="run(this)">ไม่ 😝</button>
+</div>
+
+<script>
+function love(){
+    alert("รักนะหมูเเว่น");
+}
+
+function run(btn){
+    btn.style.position="absolute";
+    btn.style.top=Math.random()*80+"%";
+    btn.style.left=Math.random()*80+"%";
+}
+
+/* หัวใจลอย */
+setInterval(()=>{
+    let heart=document.createElement("div");
+    heart.innerHTML="💖";
+    heart.className="heart";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(20+Math.random()*30)+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+},300);
+</script>
+
+</body>
+</html>
